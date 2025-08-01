@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Almanca C2 Test</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  input, button { font-size: 16px; padding: 10px; margin: 5px 0; }
+</style>
+</head>
+<body>
+<h1>Almanca C2 Kelime Testi</h1>
+<div id="quiz"></div>
+<button onclick="checkAnswers()">Cevapları Kontrol Et</button>
+<div id="result"></div>
+
+<script>
+const questions = [
+  { q: "Was bedeutet 'die Herausforderung'?", a: "Zorluk" },
+  { q: "Wie sagt man 'solution' auf Deutsch?", a: "Lösung" },
+  { q: "Was ist das Synonym von 'ausgezeichnet'?", a: "hervorragend" }
+];
+
+const quizDiv = document.getElementById('quiz');
+questions.forEach((item, i) => {
+  quizDiv.innerHTML += `<p>${item.q}</p><input id="answer${i}" type="text" />`;
+});
+
+function checkAnswers() {
+  let score = 0;
+  questions.forEach((item, i) => {
+    const userAnswer = document.getElementById(`answer${i}`).value.trim().toLowerCase();
+    if(userAnswer === item.a.toLowerCase()) score++;
+  });
+  document.getElementById('result').textContent = `Puanınız: ${score} / ${questions.length}`;
+}
+</script>
+</body>
+</html>
